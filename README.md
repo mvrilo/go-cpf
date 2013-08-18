@@ -5,7 +5,12 @@
 ## Usage
 
 #### Command-line example:
-    $ go-cpf 832.715.604-77
+```bash
+$ go-cpf
+487.160.523-07
+$ go-cpf 487.160.523-07
+✔
+```
 
 To generate, just run it without any arguments.
 
