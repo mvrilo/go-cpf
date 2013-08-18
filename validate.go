@@ -43,6 +43,8 @@ func check(cpf []int) (bool, error) {
 func fixType(digits interface{}) ([]int, error) {
 	switch v := digits.(type) {
 	case string:
+		v = strings.Replace(v, ".", "", -1)
+		v = strings.Replace(v, "-", "", -1)
 		return fixType([]byte(v))
 	case []byte:
 		var slice = []int{}
