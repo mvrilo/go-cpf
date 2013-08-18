@@ -2,6 +2,7 @@ package cpf
 
 import (
 	"errors"
+	"fmt"
 	"strconv"
 	"strings"
 )
@@ -24,16 +25,7 @@ func check(cpf []int) (bool, error) {
 		return false, errors.New("Invalid length")
 	}
 
-	var (
-		digits []byte
-		i      int
-	)
-
-	for ; i < len(cpf); i++ {
-		digits = strconv.AppendInt(digits, int64(cpf[i]), 10)
-	}
-
-	if blackListed(digits) || !checkEach(cpf, 9) || !checkEach(cpf, 10) {
+	if blackListed(cpf) || !checkEach(cpf, 9) || !checkEach(cpf, 10) {
 		return false, errors.New("Invalid value")
 	}
 
@@ -60,11 +52,15 @@ func fixType(digits interface{}) ([]int, error) {
 	}
 }
 
-var blackList = []string{"123456789", "0000",
-	"1111", "2222", "3333", "4444", "5555",
-	"6666", "7777", "8888", "9999"}
+var blackList = []string{"1 2 3 4 5 6 7 8 9",
+	"0 0 0 0", "1 1 1 1",
+	"2 2 2 2", "3 3 3 3",
+	"4 4 4 4", "5 5 5 5",
+	"6 6 6 6", "7 7 7 7",
+	"8 8 8 8", "9 9 9 9"}
 
-func blackListed(cpf []byte) (res bool) {
+func blackListed(digits []int) (res bool) {
+	var cpf = fmt.Sprintf("%v", digits)
 	for i := 0; i < len(blackList); i++ {
 		if strings.Contains(string(cpf), blackList[i]) {
 			res = true

@@ -16,6 +16,11 @@ func Generate() []int {
 	)
 	cpf = append(cpf, verify(digits))
 	cpf = append(cpf, verify(cpf))
+
+	if blackListed(cpf) {
+		return Generate()
+	}
+
 	return cpf
 }
 
