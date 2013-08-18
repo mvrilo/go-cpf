@@ -4,13 +4,13 @@ import (
 	"os"
 	"strings"
 
-	"github.com/mvrilo/go-cpf"
+	"github.com/mvrilo/go-cpf/lib"
 )
 
 const help = `go-cpf is a tool to validate and generate CPF numbers.
 
 Usage:
-	cpf [xxxxxxxxxxx]
+	go-cpf [xxxxxxxxxxx]
 
 To generate just run it without any arguments.
 
