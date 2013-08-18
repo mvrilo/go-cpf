@@ -15,7 +15,7 @@ func Generate() []int {
 		cpf    = digits
 	)
 	cpf = append(cpf, verify(digits))
-	cpf = append(cpf, verify(digits))
+	cpf = append(cpf, verify(cpf))
 	return cpf
 }
 
@@ -46,12 +46,13 @@ func GeneratePretty() string {
 
 func verify(digits []int) int {
 	var (
-		total int
-		i     int
+		total  int
+		i      int
+		length = len(digits)
 	)
 
-	for ; i < len(digits); i++ {
-		total += digits[i] * (10 - i)
+	for ; i < length; i++ {
+		total += digits[i] * (length + 1 - i)
 	}
 
 	total = total % 11
