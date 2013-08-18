@@ -18,7 +18,7 @@ To generate, just run it without any arguments.
 ```go
 package main
 
-import "github.com/mvrilo/go-cpf"
+import "github.com/mvrilo/go-cpf/lib"
 
 func main() {
         println(cpf.GeneratePretty())
