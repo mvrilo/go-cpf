@@ -1,1 +1,1 @@
-web: cpf
+web: go-cpf

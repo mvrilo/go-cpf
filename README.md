@@ -1,1 +1,1 @@
-http://cpf.heroku.com/
+http://cpf.herokuapp.com/
