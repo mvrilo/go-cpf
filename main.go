@@ -38,6 +38,6 @@ func main() {
 		port = "8080"
 	}
 
-	println("-- cpf web is running at 8080 --")
-	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), m))
+	println("-- cpf web is running at " + port + " --")
+	log.Fatal(http.ListenAndServe(":"+port, m))
 }
