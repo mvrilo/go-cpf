@@ -1,55 +1,43 @@
 package main
 
 import (
+	"log"
+	"net/http"
 	"os"
-	"strings"
 
+	"github.com/bmizerany/pat"
 	"github.com/mvrilo/go-cpf/lib"
 )
 
-const help = `go-cpf is a tool to validate and generate CPF numbers.
+func generate(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte(cpf.GeneratePretty()))
+}
 
-Usage:
-	go-cpf [xxxxxxxxxxx]
+func validate(w http.ResponseWriter, r *http.Request) {
+	var value = r.URL.Query().Get(":cpf")
 
-To generate just run it without any arguments.
+	if value == "about" || value == "source" || value == "src" {
+		http.Redirect(w, r, "https://github.com/mvrilo/go-cpf", 302)
+		return
+	}
 
-Links:
-	https://en.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas
-	https://github.com/mvrilo/go-cpf
-`
+	if cpf.Valid(value) {
+		w.Write([]byte("yep"))
+		return
+	}
+	w.Write([]byte("nope"))
+}
 
 func main() {
-	if len(os.Args) < 2 {
-		generate()
-		return
+	var m = pat.New()
+	m.Get("/", http.HandlerFunc(generate))
+	m.Get("/:cpf", http.HandlerFunc(validate))
+
+	var port = os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
 	}
 
-	if strings.Contains(os.Args[1], "-h") {
-		println(help)
-		return
-	}
-
-	validate()
-}
-
-func validate() {
-	var (
-		res = "\u2718"
-		ok  = cpf.Valid(os.Args[1])
-	)
-
-	if len(os.Args) == 3 {
-		println(ok)
-		return
-	}
-
-	if ok {
-		res = "\u2714"
-	}
-	println(res)
-}
-
-func generate() {
-	println(cpf.GeneratePretty())
+	println("-- cpf web is running at 8080 --")
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), m))
 }
