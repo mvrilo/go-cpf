@@ -4,19 +4,19 @@ import (
 	"os"
 	"strings"
 
-	"github.com/mvrilo/go-cpf/lib"
+	"github.com/mvrilo/cpfer/lib"
 )
 
-const help = `go-cpf is a tool to validate and generate CPF numbers.
+const help = `cpfer is a tool to validate and generate CPF numbers.
 
 Usage:
-	go-cpf [xxxxxxxxxxx]
+	cpfer [xxxxxxxxxxx]
 
 To generate just run it without any arguments.
 
 Links:
 	https://en.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas
-	https://github.com/mvrilo/go-cpf
+	https://github.com/mvrilo/cpfer
 `
 
 func main() {
