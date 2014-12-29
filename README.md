@@ -1,6 +1,6 @@
 # go-cpf
 
-[CPF] validator and generator written in Go.
+[CPF](https://en.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas) validator and generator written in Go.
 
 ## Usage
 
@@ -29,5 +29,3 @@ func main() {
 ## License
 
 See [LICENSE](https://github.com/mvrilo/go-cpf/blob/master/LICENSE)
-
-[CPF]: https://en.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas

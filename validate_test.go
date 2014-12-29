@@ -12,3 +12,11 @@ func Test_sanitize(t *testing.T) {
 		t.Errorf("sanitize didn't work")
 	}
 }
+
+func Test_Valid(t *testing.T) {
+	for _, d := range strings.Split(blacklist, "\n") {
+		if ok, _ := Valid(d); ok {
+			t.Errorf("blacklist values shouldn't be valid")
+		}
+	}
+}
