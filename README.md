@@ -13,8 +13,6 @@ $ cpf 487.160.523-07
 ✔
 ```
 
-To generate, just run it without any arguments.
-
 #### API example:
 ```go
 package main
