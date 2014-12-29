@@ -1,4 +1,4 @@
-# cpfer
+# go-cpf
 
 [CPF] validator and generator written in Go.
 
@@ -6,9 +6,10 @@
 
 #### Command-line example:
 ```bash
-$ cpfer
+$ go get github.com/mvrilo/go-cpf/cmd/cpf
+$ cpf
 487.160.523-07
-$ cpfer 487.160.523-07
+$ cpf 487.160.523-07
 ✔
 ```
 
@@ -18,7 +19,7 @@ To generate, just run it without any arguments.
 ```go
 package main
 
-import "github.com/mvrilo/cpfer/lib"
+import "github.com/mvrilo/go-cpf"
 
 func main() {
         println(cpf.GeneratePretty())
@@ -27,6 +28,6 @@ func main() {
 
 ## License
 
-See [LICENSE](https://github.com/mvrilo/cpfer/blob/master/LICENSE)
+See [LICENSE](https://github.com/mvrilo/go-cpf/blob/master/LICENSE)
 
 [CPF]: https://en.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas
