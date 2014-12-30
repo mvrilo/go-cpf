@@ -12,10 +12,6 @@ Usage:
 	cpf [xxxxxxxxxxx] [-vh]
 
 To generate just run it without any arguments.
-
-Links:
-	https://en.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas
-	https://github.com/mvrilo/go-cpf
 `
 
 var verbose = false
@@ -43,8 +39,10 @@ func main() {
 func validate() {
 	_, err := cpf.Valid(os.Args[1])
 
-	if verbose && err != nil {
-		os.Stdout.Write([]byte(err.Error() + " "))
+	if err != nil {
+		if verbose {
+			os.Stdout.Write([]byte(err.Error() + " "))
+		}
 		os.Stderr.Write([]byte("\u2718\n"))
 		os.Exit(1)
 		return
