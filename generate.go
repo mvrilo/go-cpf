@@ -8,21 +8,18 @@ import (
 	"time"
 )
 
-func Generate() string {
+func Generate() (cpfString string) {
 	rand.Seed(time.Now().UTC().UnixNano())
-	var (
-		digits = rand.Perm(9)
-		cpf    = digits
-	)
+	digits := rand.Perm(9)
+	cpf := digits
 	cpf = append(cpf, verify(digits, len(cpf)))
 	cpf = append(cpf, verify(cpf, len(cpf)))
 
-	var cpfString string
 	for _, c := range cpf {
 		cpfString += strconv.Itoa(c)
 	}
 
-	return cpfString
+	return
 }
 
 func GeneratePretty() (cpf string) {
