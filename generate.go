@@ -10,9 +10,8 @@ import (
 
 func Generate() (cpfString string) {
 	rand.Seed(time.Now().UTC().UnixNano())
-	digits := rand.Perm(9)
-	cpf := digits
-	cpf = append(cpf, verify(digits, len(cpf)))
+	cpf := rand.Perm(9)
+	cpf = append(cpf, verify(cpf, len(cpf)))
 	cpf = append(cpf, verify(cpf, len(cpf)))
 
 	for _, c := range cpf {
