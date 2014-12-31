@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/bmizerany/pat"
-	"github.com/mvrilo/go-cpf/lib"
+	"github.com/mvrilo/go-cpf"
 )
 
 func generate(w http.ResponseWriter, r *http.Request) {
@@ -16,7 +16,7 @@ func generate(w http.ResponseWriter, r *http.Request) {
 func validate(w http.ResponseWriter, r *http.Request) {
 	var value = r.URL.Query().Get(":cpf")
 
-	if value == "about" || value == "source" || value == "src" {
+	if value == "about" || value == "info" || value == "source" || value == "src" {
 		http.Redirect(w, r, "https://github.com/mvrilo/go-cpf", 302)
 		return
 	}
