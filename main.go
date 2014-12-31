@@ -21,7 +21,7 @@ func validate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if cpf.Valid(value) {
+	if ok, _ := cpf.Valid(value); ok {
 		w.Write([]byte("yep"))
 		return
 	}
