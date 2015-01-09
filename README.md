@@ -1,4 +1,5 @@
-# go-cpf
+# go-cpf 
+[![Build Status](https://secure.travis-ci.org/mvrilo/go-cpf.png)](http://travis-ci.org/mvrilo/go-cpf)
 
 [CPF](https://en.wikipedia.org/wiki/Cadastro_de_Pessoas_F%C3%ADsicas) validator and generator written in Go.
 
