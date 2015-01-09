@@ -43,9 +43,12 @@ const blacklist = `00000000000
 99999999999
 12345678909`
 
-func intToString(data string) (res []int) {
+func stringToIntSlice(data string) (res []int) {
 	for _, d := range data {
-		x, _ := strconv.Atoi(string(d))
+		x, err := strconv.Atoi(string(d))
+		if err != nil {
+			continue
+		}
 		res = append(res, x)
 	}
 	return
@@ -70,7 +73,7 @@ func check(data string) bool {
 }
 
 func checkEach(data string, n int) bool {
-	final := verify(intToString(data), n)
+	final := verify(stringToIntSlice(data), n)
 
 	x, err := strconv.Atoi(string(data[n]))
 	if err != nil {
