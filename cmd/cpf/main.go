@@ -53,6 +53,6 @@ func validate() {
 }
 
 func generate() {
-	println(cpf.GeneratePretty())
+	os.Stdout.Write([]byte(cpf.GeneratePretty() + "\n"))
 	os.Exit(0)
 }
