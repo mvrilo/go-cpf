@@ -21,15 +21,19 @@ func Generate() (cpfString string) {
 	return
 }
 
-func GeneratePretty() (cpf string) {
-	digits := Generate()
+func GeneratePretty() string {
+	cpf := Generate()
+	return Prettify(cpf)
+}
 
+// Prettify prettify our single cpf number
+func Prettify(cpf string) string {
 	re := regexp.MustCompile(`(?P<1>\d{3})(?P<2>\d{3})(?P<3>\d{3})(?P<4>\d{2})`)
 
 	names := re.SubexpNames()
 	formatted := fmt.Sprintf("${%s}.${%s}.${%s}-${%s}",
 		names[1], names[2], names[3], names[4])
 
-	cpf = re.ReplaceAllString(digits, formatted)
-	return
+	cpf = re.ReplaceAllString(cpf, formatted)
+	return cpf
 }
