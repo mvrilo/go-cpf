@@ -36,3 +36,18 @@ func Test_GeneratePretty(t *testing.T) {
 		t.Errorf("GeneratePretty should return formatted string")
 	}
 }
+
+func Test_Prettify(t *testing.T) {
+
+	data := GeneratePretty()
+	data = Prettify(data)
+
+	if len(data) != 14 {
+		t.Errorf("cpf length is not right")
+	}
+
+	if !strings.Contains(data, "-") || !strings.Contains(data, ".") {
+		t.Errorf("GeneratePretty should return formatted string")
+	}
+
+}
